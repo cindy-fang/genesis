@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-// import rootRouter from "./routes";
+const routes_1 = __importDefault(require("./routes"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const host = process.env.HOST ?? "localhost";
@@ -23,7 +23,7 @@ app.options("*", (req, res) => {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     res.status(200).send();
 });
-// app.use("/", rootRouter);
+app.use("/", routes_1.default);
 app.listen(port, host, () => {
     console.log(`[ ready ] http://${host}:${port}`);
 });

@@ -1,5 +1,5 @@
 import express from "express";
-// import rootRouter from "./routes";
+import rootRouter from "./routes";
 import dotenv from "dotenv";
 dotenv.config();
 const host = process.env.HOST ?? "localhost";
@@ -19,7 +19,7 @@ app.options("*", (req, res) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.status(200).send();
 });
-// app.use("/", rootRouter);
+app.use("/", rootRouter);
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
