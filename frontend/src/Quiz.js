@@ -360,7 +360,6 @@ function Quiz() {
   </div>
 </div>
 
-
       <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
       <h2 style={{ textAlign: 'center' }}>Time commitment</h2>
       <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 

@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Checkbox({ checked, onChange }) {
+function Checkbox({ defaultChecked, onChange }) {
+  const [isChecked, setIsChecked] = useState(defaultChecked);
+
+  const handleClick = () => {
+    setIsChecked(!isChecked);
+    onChange && onChange(!isChecked);
+  };
+
   return (
     <>
       <style>{`
@@ -15,7 +22,7 @@ function Checkbox({ checked, onChange }) {
         }
 
         .custom-checkbox.checked::before {
-          content: '🥕'; /* Display checkmark emoji when checked */
+          content: '🥕'; /* Display carrot emoji when checked */
           font-size: 16px;
           position: absolute;
           top: 50%;
@@ -27,7 +34,7 @@ function Checkbox({ checked, onChange }) {
           background-color: #d2f5d8; /* Change background color when checked */
         }
       `}</style>
-      <div className={`custom-checkbox ${checked ? 'checked' : ''}`} onClick={onChange}>
+      <div className={`custom-checkbox ${isChecked ? 'checked' : ''}`} onClick={handleClick}>
         {/* Display carrot emoji */}
       </div>
     </>
