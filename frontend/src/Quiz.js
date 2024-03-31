@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'; 
 import { useNavigate } from 'react-router-dom';
+import Checkbox from './Checkbox'; // Import the Checkbox component
 
-function GardenQuiz() {
+function Quiz() {
   const [selectedAnswers, setSelectedAnswers] = React.useState({
     garden: null,
     season: null,
@@ -18,16 +19,6 @@ function GardenQuiz() {
     }));
     console.log(selectedAnswers[question])
   };
-
-  // const handleGoalClick = (goal) => {
-  //   setSelectedAnswers((prevAnswers) => ({
-  //     ...prevAnswers,
-  //     goal: prevAnswers.goal.includes(goal)
-  //       ? prevAnswers.goal.filter((g) => g !== goal)
-  //       : [...prevAnswers.goal, goal],
-  //   }));
-    
-  // };
 
   const handleGoalClick = (goal) => {
     setSelectedAnswers((prevAnswers) => ({
@@ -68,9 +59,8 @@ function GardenQuiz() {
 
   return (
     <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
-      <h2>Where is your garden?</h2>
-      {/* Existing question and answer choices */}
-      <div>
+      <h2 style={{ textAlign: 'center' }}>Where is your garden?</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
       <button
           onClick={() => {handleClick('garden', 'Condo interior');}}
           style={{
@@ -139,8 +129,9 @@ function GardenQuiz() {
       </div>
 
       {/* Current Season */}
-      <div>
-        <h3>Current season?</h3>
+      <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
+      <h2 style={{ textAlign: 'center' }}>Current Season?</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
         <button
           onClick={() => handleClick('season', 'Spring')}
           style={{
@@ -194,10 +185,12 @@ function GardenQuiz() {
           Winter
         </button>
       </div>
+      </div>
 
       {/* Garden Size */}
-      <div>
-        <h3>What size is your future garden?</h3>
+      <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
+      <h2 style={{ textAlign: 'center' }}>What size is your future garden?</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
         <button
           onClick={() => handleClick('size', 'Tiny (1-2 plants, 20 cm longest side)')}
           style={{
@@ -261,10 +254,12 @@ function GardenQuiz() {
           Extra large (20+ plants, 2 m longest side)
         </button>
       </div>
+      </div>
 
       {/* Gardening Experience */}
-      <div>
-        <h3>What is your gardening experience?</h3>
+      <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
+      <h2 style={{ textAlign: 'center' }}>What is your gardening experience?</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
         <button
           onClick={() => handleClick('experience', 'No Prior Experience')}
           style={{
@@ -302,58 +297,73 @@ function GardenQuiz() {
           Experienced gardener 
         </button>
       </div>
-
-      {/* Gardening Goals (allow multiple selections) */}
-      <div>
-        <h3>What are your gardening goals? (Select all that apply)</h3>
-        <label>
-          <input
-            type="checkbox"
-            onChange={() => handleGoalClick('Save on Groceries')}
-            checked={selectedAnswers.goal === 'Save on Groceries'}
-          />
-          Save money on groceries
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            onChange={() => handleGoalClick('Reduce Transportation Costs')}
-            checked={selectedAnswers.goal === 'Reduce Transportation Costs'}
-          />
-          Save money on transportation for groceries 
-        </label>        <label>
-          <input
-            type="checkbox"
-            onChange={() => handleGoalClick('Reduce Carbon Footprint')}
-            checked={selectedAnswers.goal === 'Reduce Carbon Footprint'}
-          />
-          Reduce carbon footprint
-        </label>        <label>
-          <input
-            type="checkbox"
-            onChange={() => handleGoalClick('Learn to Garden')}
-            checked={selectedAnswers.goal === 'Learn to Garden'}
-          />
-          Learn how to garden 
-        </label>        <label>
-          <input
-            type="checkbox"
-            onChange={() => handleGoalClick('Eat Self-Grown')}
-            checked={selectedAnswers.goal === 'Eat Self-Grown'}
-          />
-          Eat self-grown crops 
-        </label>        <label>
-          <input
-            type="checkbox"
-            onChange={() => handleGoalClick('Improve Health')}
-            checked={selectedAnswers.goal === 'Improve Health'}
-          />
-          Improve health and nutrient intake
-        </label>        
       </div>
 
-      <div>
-        <h3>Time commitment</h3>
+{/* Gardening Goals (allow multiple selections) */}
+<div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
+  <h2 style={{ textAlign: 'center' }}>What are your gardening goals? (Select all that apply)</h2>
+  <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
+    <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
+      <Checkbox
+        type="checkbox"
+        onChange={() => handleGoalClick('Save on Groceries')}
+        checked={selectedAnswers.goal === 'Save on Groceries'}
+        style={{ marginRight: '0.5rem', width: '20px', height: '20px' }}
+      />
+      Save money on groceries
+    </label>
+    <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
+      <Checkbox
+        type="checkbox"
+        onChange={() => handleGoalClick('Reduce Transportation Costs')}
+        checked={selectedAnswers.goal === 'Reduce Transportation Costs'}
+        style={{ marginRight: '0.5rem', width: '20px', height: '20px' }}
+      />
+      Save money on transportation for groceries 
+    </label>
+    <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
+      <Checkbox
+        type="checkbox"
+        onChange={() => handleGoalClick('Reduce Carbon Footprint')}
+        checked={selectedAnswers.goal === 'Reduce Carbon Footprint'}
+        style={{ marginRight: '0.5rem', width: '20px', height: '20px' }}
+      />
+      Reduce carbon footprint
+    </label>
+    <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
+      <Checkbox
+        type="checkbox"
+        onChange={() => handleGoalClick('Learn to Garden')}
+        checked={selectedAnswers.goal === 'Learn to Garden'}
+        style={{ marginRight: '0.5rem', width: '20px', height: '20px' }}
+      />
+      Learn how to garden 
+    </label>
+    <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
+      <Checkbox
+        type="checkbox"
+        onChange={() => handleGoalClick('Eat Self-Grown')}
+        checked={selectedAnswers.goal === 'Eat Self-Grown'}
+        style={{ marginRight: '0.5rem', width: '20px', height: '20px' }}
+      />
+      Eat self-grown crops 
+    </label>
+    <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
+      <Checkbox
+        type="checkbox"
+        onChange={() => handleGoalClick('Improve Health')}
+        checked={selectedAnswers.goal === 'Improve Health'}
+        style={{ marginRight: '0.5rem', width: '20px', height: '20px' }}
+      />
+      Improve health and nutrient intake
+    </label>
+  </div>
+</div>
+
+
+      <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
+      <h2 style={{ textAlign: 'center' }}>Time commitment</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
         <button
           onClick={() => handleClick('timeCommitment', 'Less Than 2 Hours')}
           style={{
@@ -407,6 +417,7 @@ function GardenQuiz() {
           7+ hours per week 
         </button>
       </div>
+      </div>
 
       {Object.values(selectedAnswers).every((answer) => answer !== null) && (
         <>
@@ -418,4 +429,4 @@ function GardenQuiz() {
   );
 }
 
-export default GardenQuiz;
+export default Quiz;

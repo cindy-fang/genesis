@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css'; // Import CSS file for styling
 import Welcome from './Welcome'; // Import WelcomePage component
-import KahootQuestion from './KahootQuestion'; // Import KahootQuestion component
+import Quiz from './Quiz'; // Import KahootQuestion component
 
 function App() {
   const choices = ['Condo interior', 'Condo balcony', 'Company office', 'Factory interior', 'Building Rooftop'];
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Welcome />
-      <KahootQuestion question="Where is your garden?" choices={choices} />
+      <Quiz question="Where is your garden?" choices={choices} />
     </div>
     );
 }
