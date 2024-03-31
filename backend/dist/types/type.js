@@ -11,10 +11,10 @@ var GardenLocationQuery;
 })(GardenLocationQuery || (exports.GardenLocationQuery = GardenLocationQuery = {}));
 var SeasonQuery;
 (function (SeasonQuery) {
-    SeasonQuery["SPRING"] = "Condo interior";
-    SeasonQuery["SUMMER"] = "Condo balcony";
-    SeasonQuery["FALL"] = "Condo office";
-    SeasonQuery["WINTER"] = "Factory interior";
+    SeasonQuery["SPRING"] = "Spring";
+    SeasonQuery["SUMMER"] = "Summer";
+    SeasonQuery["FALL"] = "Fall";
+    SeasonQuery["WINTER"] = "Winter";
 })(SeasonQuery || (exports.SeasonQuery = SeasonQuery = {}));
 var GardenSizeQuery;
 (function (GardenSizeQuery) {

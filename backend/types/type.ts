@@ -7,10 +7,10 @@ export enum GardenLocationQuery {
 }
 
 export enum SeasonQuery {
-  SPRING = "Condo interior",
-  SUMMER = "Condo balcony",
-  FALL = "Condo office",
-  WINTER = "Factory interior",
+  SPRING = "Spring",
+  SUMMER = "Summer",
+  FALL = "Fall",
+  WINTER = "Winter",
 }
 
 export enum GardenSizeQuery {
