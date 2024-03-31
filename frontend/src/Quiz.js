@@ -80,7 +80,7 @@ function Quiz() {
       })
     ).text();
     console.log(res);
-    navigate('/dashboard');
+    navigate('/garden');
     console.log(res);
   }
 
