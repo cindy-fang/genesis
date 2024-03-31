@@ -2,12 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function GardenQuiz() {
+  const navigate = useNavigate();
   const [selectedAnswers, setSelectedAnswers] = React.useState({
     garden: null,
     season: null,
     size: null,
     experience: null,
-    goal: null, // Allow multiple selections
+    goal: [], // Allow multiple selections
     timeCommitment: null,
   });
 
@@ -19,29 +20,27 @@ function GardenQuiz() {
     console.log(selectedAnswers[question])
   };
 
-  // const handleGoalClick = (goal) => {
-  //   setSelectedAnswers((prevAnswers) => ({
-  //     ...prevAnswers,
-  //     goal: prevAnswers.goal.includes(goal)
-  //       ? prevAnswers.goal.filter((g) => g !== goal)
-  //       : [...prevAnswers.goal, goal],
-  //   }));
-    
-  // };
-
   const handleGoalClick = (goal) => {
     setSelectedAnswers((prevAnswers) => ({
       ...prevAnswers,
-      goal: prevAnswers.goal === goal
-        ? ''  // If the selected goal matches the current goal, clear it
-        : goal, // Otherwise, set the selected goal
-    }));
-    console.log(selectedAnswers.goal)
-  };
+      goal: prevAnswers.goal.includes(goal)
+        ? prevAnswers.goal.filter((g) => g !== goal)
+        : [...prevAnswers.goal, goal],
+    }))};
+    
+  // };
+
+  // const handleGoalClick = (goal) => {
+  //   setSelectedAnswers((prevAnswers) => ({
+  //     ...prevAnswers,
+  //     goal: prevAnswers.goal === goal
+  //       ? ''  // If the selected goal matches the current goal, clear it
+  //       : goal, // Otherwise, set the selected goal
+  //   }));
+  //   console.log(selectedAnswers.goal)
+  // };
 
   const isSelected = (question, answer) => selectedAnswers[question] === answer;
-
-  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     console.log(selectedAnswers)
@@ -60,9 +59,11 @@ function GardenQuiz() {
           timeCommitment: selectedAnswers.timeCommitment,
         }),
       })
-    ).text();
-    console.log(res);
-    navigate('/dashboard');
+    ).json();
+    const imgData = res[0]['image'];
+    // localStorage.setItem('imgData', imgData);
+    // console.log(res);
+    navigate('/dashboard', { state: imgData });
     console.log(res);
   }
 
@@ -310,7 +311,7 @@ function GardenQuiz() {
           <input
             type="checkbox"
             onChange={() => handleGoalClick('Save on Groceries')}
-            checked={selectedAnswers.goal === 'Save on Groceries'}
+            checked={selectedAnswers.goal.includes('Save on Groceries')}
           />
           Save money on groceries
         </label>
@@ -318,35 +319,36 @@ function GardenQuiz() {
           <input
             type="checkbox"
             onChange={() => handleGoalClick('Reduce Transportation Costs')}
-            checked={selectedAnswers.goal === 'Reduce Transportation Costs'}
+            checked={selectedAnswers.goal.includes('Reduce Transportation Costs')}
           />
           Save money on transportation for groceries 
         </label>        <label>
           <input
             type="checkbox"
             onChange={() => handleGoalClick('Reduce Carbon Footprint')}
-            checked={selectedAnswers.goal === 'Reduce Carbon Footprint'}
+            checked={selectedAnswers.goal.includes('Reduce Carbon Footprint')}
           />
           Reduce carbon footprint
         </label>        <label>
           <input
             type="checkbox"
             onChange={() => handleGoalClick('Learn to Garden')}
-            checked={selectedAnswers.goal === 'Learn to Garden'}
+            checked={selectedAnswers.goal.includes('Learn to Garden')}
           />
           Learn how to garden 
         </label>        <label>
           <input
             type="checkbox"
             onChange={() => handleGoalClick('Eat Self-Grown')}
-            checked={selectedAnswers.goal === 'Eat Self-Grown'}
+            checked={selectedAnswers.goal.includes('Eat Self-Grown')}
+            
           />
           Eat self-grown crops 
         </label>        <label>
           <input
             type="checkbox"
             onChange={() => handleGoalClick('Improve Health')}
-            checked={selectedAnswers.goal === 'Improve Health'}
+            checked={selectedAnswers.goal.includes('Improve Health')}
           />
           Improve health and nutrient intake
         </label>        

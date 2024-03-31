@@ -41,6 +41,7 @@ export async function questionQuery(req: Request, res: Response) {
     for (const plant of plants) {
       plant["image"] = await getImage("cartoon " + plant.name);
     }
+    console.log(text);
     return res.json(plants);
   } catch (e) {
     if (e instanceof z.ZodError) {
