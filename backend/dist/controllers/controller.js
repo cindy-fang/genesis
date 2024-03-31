@@ -33,7 +33,7 @@ async function questionQuery(req, res) {
         const text = response.text();
         const plants = JSON.parse(text);
         for (const plant of plants) {
-            plant["image"] = await (0, util_1.getImage)("cartoon " + plant.name);
+            plant["image"] = await (0, util_1.getImage)("anime " + plant.name);
         }
         return res.json(plants);
     }
