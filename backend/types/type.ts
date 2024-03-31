@@ -1,7 +1,7 @@
 export enum GardenLocationQuery {
   CONDO_INTERIOR = "Condo interior",
   CONDO_BALCONY = "Condo balcony",
-  CONDO_OFFICE = "Condo office",
+  COMPANY_OFFICE = "Company office",
   FACTORY_INTERIOR = "Factory interior",
   BUILDING_ROOFTOP = "Building rooftop",
 }
