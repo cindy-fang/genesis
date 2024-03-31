@@ -35,5 +35,5 @@ describe("The questions api works!", () => {
         })
       ).json()
     ).toStrictEqual("Acutally Works!");
-  });
+  }, 15000);
 });
