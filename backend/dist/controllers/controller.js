@@ -22,7 +22,7 @@ async function questionQuery(req, res) {
     2. The season is ${input.season}
     3. The size of the future garden is ${input.size}
     4. Their gardening experience is ${input.experience}
-    5. Their gardening goal is ${input.goal}
+    5. Their gardening goals is/are ${input.goal.join(", ")}
     6. Their time commitment is ${input.timeCommitment} a day
     With that in mind, generate the following data in this exact json format (no text no response except json):
     [{ name: string, dailytodolist: ["...", "...", "...", "...", "..."], description: string}]
@@ -35,7 +35,6 @@ async function questionQuery(req, res) {
         for (const plant of plants) {
             plant["image"] = await (0, util_1.getImage)("cartoon " + plant.name);
         }
-        // console.log(plants);
         return res.json(plants);
     }
     catch (e) {

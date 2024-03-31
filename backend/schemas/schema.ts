@@ -14,7 +14,7 @@ export const QuestionQuerySchema = z
     season: z.nativeEnum(SeasonQuery),
     size: z.nativeEnum(GardenSizeQuery),
     experience: z.nativeEnum(GardeningExperienceQuery),
-    goal: z.nativeEnum(GardeningGoalQuery),
+    goal: z.array(z.nativeEnum(GardeningGoalQuery)),
     timeCommitment: z.nativeEnum(TimeCommitmentQuery),
   })
   .strict();

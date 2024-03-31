@@ -9,7 +9,7 @@ exports.QuestionQuerySchema = zod_1.z
     season: zod_1.z.nativeEnum(type_1.SeasonQuery),
     size: zod_1.z.nativeEnum(type_1.GardenSizeQuery),
     experience: zod_1.z.nativeEnum(type_1.GardeningExperienceQuery),
-    goal: zod_1.z.nativeEnum(type_1.GardeningGoalQuery),
+    goal: zod_1.z.array(zod_1.z.nativeEnum(type_1.GardeningGoalQuery)),
     timeCommitment: zod_1.z.nativeEnum(type_1.TimeCommitmentQuery),
 })
     .strict();
