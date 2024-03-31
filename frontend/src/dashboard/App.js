@@ -3,9 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Layout from './components/Layout';
 import Garden from './components/Garden';
+import GlobalStyle from '../GlobalStyle'; // Import the GlobalStyle component
+
 
 const App = () => {
   return (
+    <>
+    <GlobalStyle /> 
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<Layout />} >
@@ -14,6 +18,7 @@ const App = () => {
             </Route>
         </Routes>
     </BrowserRouter>
+    </>
   )
 }
 
