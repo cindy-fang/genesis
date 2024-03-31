@@ -1,50 +1,40 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getImage = void 0;
 const dotenv_1 = require("dotenv");
-const node_buffer_1 = require("node:buffer");
+const buffer_1 = require("buffer");
+const axios_1 = __importDefault(require("axios"));
 (0, dotenv_1.config)();
 const API_BASE_URL = `https://api.cloudflare.com/client/v4/accounts/${process.env.ACCOUNT_ID}/ai/run/`;
 const headers = {
     Authorization: `Bearer ${process.env.API_KEY}`,
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Type": "application/json",
 };
-// async function binaryStringToBase64(binaryString: string): Promise<string> {
-//   const buffer = await new TextEncoder().encode(binaryString);
-//   return buffer.toString("base64");
-// }
 async function run(model, prompt) {
     const input = { prompt };
     try {
-        const response = await fetch(`${API_BASE_URL}${model}`, {
-            method: "POST",
-            headers,
-            body: JSON.stringify(input),
+        const response = await axios_1.default.post(`${API_BASE_URL}${model}`, input, {
+            headers: headers,
+            responseType: "arraybuffer",
         });
-        if (!response.ok) {
-            throw new Error(`API request failed with status ${response.status}`);
-        }
-        const data = await response.blob();
-        return data;
+        return response.data;
     }
     catch (error) {
         console.error("Error running model:", error);
-        throw error; // Or handle the error differently
+        throw error;
     }
 }
-const inputs = [
-    "You are a friendly assistant that helps write stories",
-    "Generate an anime carrot image",
-];
 function convertArrayBufferToBase64(arrayBuffer) {
-    // Convert ArrayBuffer to Buffer
-    const buffer = node_buffer_1.Buffer.from(arrayBuffer);
+    const buffer = buffer_1.Buffer.from(arrayBuffer);
     return buffer.toString("base64");
 }
 async function getImage(prompt) {
     try {
         const output = await run("@cf/lykon/dreamshaper-8-lcm", prompt);
-        return convertArrayBufferToBase64(await output.arrayBuffer());
+        return convertArrayBufferToBase64(output);
     }
     catch (error) {
         console.error("Error generating story:", error);
