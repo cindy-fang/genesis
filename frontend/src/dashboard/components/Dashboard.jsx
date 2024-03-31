@@ -1,5 +1,4 @@
 import React from 'react'
-import {slide as Menu} from 'react-burger-menu';
 import styled from 'styled-components'
 import Catalogue from './Drawer';
 
@@ -49,20 +48,6 @@ const Dashboard = () => {
         </div>
     )
 }
-
-const BurgerMenu = () => {
-    return (
-        <Menu>
-            <ul>
-                RECOMMENDED PLANTS
-                <LI>Aloe vera</LI>
-                <LI>Venus fly trap</LI>
-                <LI>carrot</LI>
-                <LI>abcdef</LI>
-            </ul>
-        </Menu>
-    );
-};
 
 const TABLE = styled.table`
     background-color: red;
