@@ -32,7 +32,7 @@ function convertArrayBufferToBase64(arrayBuffer: ArrayBuffer) {
 
 export async function getImage(prompt: string) {
   try {
-    const output = await run("@cf/lykon/dreamshaper-8-lcm", prompt);
+    const output = await run("@cf/bytedance/stable-diffusion-xl-lightning", prompt);
     return convertArrayBufferToBase64(output);
   } catch (error) {
     console.error("Error generating story:", error);

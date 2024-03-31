@@ -8,7 +8,7 @@ function Quiz() {
     season: null,
     size: null,
     experience: null,
-    goal: null, // Allow multiple selections
+    goal: [], // Allow multiple selections
     timeCommitment: null,
   });
 
@@ -23,12 +23,22 @@ function Quiz() {
   const handleGoalClick = (goal) => {
     setSelectedAnswers((prevAnswers) => ({
       ...prevAnswers,
-      goal: prevAnswers.goal === goal
-        ? ''  // If the selected goal matches the current goal, clear it
-        : goal, // Otherwise, set the selected goal
+      goal: prevAnswers.goal.includes(goal)
+        ? prevAnswers.goal.filter((g) => g !== goal)
+        : [...prevAnswers.goal, goal],
     }));
-    console.log(selectedAnswers.goal)
+    
   };
+
+  // const handleGoalClick = (goal) => {
+  //   setSelectedAnswers((prevAnswers) => ({
+  //     ...prevAnswers,
+  //     goal: prevAnswers.goal === goal
+  //       ? ''  // If the selected goal matches the current goal, clear it
+  //       : goal, // Otherwise, set the selected goal
+  //   }));
+  //   console.log(selectedAnswers.goal)
+  // };
 
   const isSelected = (question, answer) => selectedAnswers[question] === answer;
 
@@ -78,9 +88,10 @@ function Quiz() {
           timeCommitment: selectedAnswers.timeCommitment,
         }),
       })
-    ).text();
+    ).json();
+    const someData = res;
     console.log(res);
-    navigate('/garden');
+    navigate('/garden', { state: someData });
     console.log(res);
   }
 
