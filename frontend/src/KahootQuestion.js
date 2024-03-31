@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function GardenQuiz() {
   const [selectedAnswers, setSelectedAnswers] = React.useState({
@@ -28,6 +29,8 @@ function GardenQuiz() {
   };
 
   const isSelected = (question, answer) => selectedAnswers[question] === answer;
+
+  const navigate = useNavigate();
 
   return (
     <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
@@ -372,7 +375,10 @@ function GardenQuiz() {
       </div>
 
       {Object.values(selectedAnswers).every((answer) => answer !== null) && (
-        <p>Great! You've answered all the questions. Let's get you started on your gardening journey!</p>
+        <>
+          <p>Great! You've answered all the questions. Let's get you started on your gardening journey!</p>
+          <button onClick={() => navigate('/dashboard')}>submit</button>
+        </>
       )}
     </div>
   );
