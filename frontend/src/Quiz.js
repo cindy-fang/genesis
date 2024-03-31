@@ -99,7 +99,7 @@ function Quiz() {
     `}</style>
 
     <div className="question-container">
-    <div style={{ backgroundColor: 'pastelGreen', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    <div style={{ backgroundColor: 'pastelGreen', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: "300px"}}>
       <h2 style={{ textAlign: 'center' }}>Where is your garden?</h2>
       <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
       <button

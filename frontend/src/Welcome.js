@@ -38,8 +38,12 @@ const Welcome = () => {
         Your ultimate gardening companion! With our app, even beginners can effortlessly grow their own healthy crops with personalized recommendations and expert guidance, bringing the joy of gardening right to your fingertips.
       </p>
       </div>
-      <img src={plant} alt="Cute Plant" className="plant-image" style={{ width: '500px', marginBottom: '200px' }}/>
+      <img src={plant} alt="Cute Plant" className="plant-image" style={{ width: '500px', marginBottom: '20px' }}/>
+      <p className="welcome-message" style={{ textAlign: 'center', paddingLeft: '410px', paddingRight: '410px', marginBottom: '100px'}}>
+      💚 Let's personalize your future garden 🥬
+      </p>
     </div>
+    
   );
 };
 
