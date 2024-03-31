@@ -62,6 +62,8 @@ function GardenQuiz() {
       })
     ).text();
     console.log(res);
+    navigate('/dashboard');
+    console.log(res);
   }
 
   return (
@@ -122,14 +124,14 @@ function GardenQuiz() {
           Factory interior
         </button>
         <button
-          onClick={() => handleClick('garden', 'Building Rooftop')}
+          onClick={() => handleClick('garden', 'Building rooftop')}
           style={{
             margin: '1rem',
             padding: '1rem',
-            backgroundColor: isSelected('garden', 'Building Rooftop') ? '#d2f5d8' : '',
-            border: isSelected('garden', 'Building Rooftop') ? '2px solid #40c267' : 'none',
+            backgroundColor: isSelected('garden', 'Building rooftop') ? '#d2f5d8' : '',
+            border: isSelected('garden', 'Building rooftop') ? '2px solid #40c267' : 'none',
             borderRadius: '10px',
-            boxShadow: isSelected('garden', 'Building Rooftop') ? '0px 0px 5px 1px #40c267' : 'none',
+            boxShadow: isSelected('garden', 'Building rooftop') ? '0px 0px 5px 1px #40c267' : 'none',
           }}
         >
           Building Rooftop
@@ -246,14 +248,14 @@ function GardenQuiz() {
         >
           Large (11-20 plants, 1.5 m longest side)
         </button>        <button
-          onClick={() => handleClick('size', 'Extra large (20+ plants, 2 m longest side)')}
+          onClick={() => handleClick('size', 'Extra Large (20+ plants, 2 m longest side)')}
           style={{
             margin: '1rem',
             padding: '1rem',
-            backgroundColor: isSelected('size', 'Extra large (20+ plants, 2 m longest side)') ? '#d2f5d8' : '',
-            border: isSelected('size', 'Extra large (20+ plants, 2 m longest side)') ? '2px solid #40c267' : 'none',
+            backgroundColor: isSelected('size', 'Extra Large (20+ plants, 2 m longest side)') ? '#d2f5d8' : '',
+            border: isSelected('size', 'Extra Large (20+ plants, 2 m longest side)') ? '2px solid #40c267' : 'none',
             borderRadius: '10px',
-            boxShadow: isSelected('size', 'Extra large (20+ plants, 2 m longest side)') ? '0px 0px 5px 1px #40c267' : 'none',
+            boxShadow: isSelected('size', 'Extra Large (20+ plants, 2 m longest side)') ? '0px 0px 5px 1px #40c267' : 'none',
           }}
         >
           Extra large (20+ plants, 2 m longest side)
@@ -264,14 +266,14 @@ function GardenQuiz() {
       <div>
         <h3>What is your gardening experience?</h3>
         <button
-          onClick={() => handleClick('experience', 'No prior gardening experience')}
+          onClick={() => handleClick('experience', 'No Prior Experience')}
           style={{
             margin: '1rem',
             padding: '1rem',
-            backgroundColor: isSelected('experience', 'No prior gardening experience') ? '#d2f5d8' : '',
-            border: isSelected('experience', 'No prior gardening experience') ? '2px solid #40c267' : 'none',
+            backgroundColor: isSelected('experience', 'No Prior Experience') ? '#d2f5d8' : '',
+            border: isSelected('experience', 'No Prior Experience') ? '2px solid #40c267' : 'none',
             borderRadius: '10px',
-            boxShadow: isSelected('experience', 'No prior gardening experience') ? '0px 0px 5px 1px #40c267' : 'none',
+            boxShadow: isSelected('experience', 'No Prior Experience') ? '0px 0px 5px 1px #40c267' : 'none',
           }}        >
           No prior gardening experience
         </button>
@@ -288,14 +290,14 @@ function GardenQuiz() {
           Some gardening experience 
         </button>
         <button
-          onClick={() => handleClick('experience', 'Experienced gardener')}
+          onClick={() => handleClick('experience', 'Experienced')}
           style={{
             margin: '1rem',
             padding: '1rem',
-            backgroundColor: isSelected('experience', 'Experienced gardener') ? '#d2f5d8' : '',
-            border: isSelected('experience', 'Experienced gardener') ? '2px solid #40c267' : 'none',
+            backgroundColor: isSelected('experience', 'Experienced') ? '#d2f5d8' : '',
+            border: isSelected('experience', 'Experienced') ? '2px solid #40c267' : 'none',
             borderRadius: '10px',
-            boxShadow: isSelected('experience', 'Experienced gardener') ? '0px 0px 5px 1px #40c267' : 'none',
+            boxShadow: isSelected('experience', 'Experienced') ? '0px 0px 5px 1px #40c267' : 'none',
           }}        >
           Experienced gardener 
         </button>
@@ -315,36 +317,36 @@ function GardenQuiz() {
         <label>
           <input
             type="checkbox"
-            onChange={() => handleGoalClick('Save money on transportation for groceries ')}
-            checked={selectedAnswers.goal === 'Save money on transportation for groceries '}
+            onChange={() => handleGoalClick('Reduce Transportation Costs')}
+            checked={selectedAnswers.goal === 'Reduce Transportation Costs'}
           />
           Save money on transportation for groceries 
         </label>        <label>
           <input
             type="checkbox"
-            onChange={() => handleGoalClick('Reduce carbon footprint')}
-            checked={selectedAnswers.goal === 'Reduce carbon footprint'}
+            onChange={() => handleGoalClick('Reduce Carbon Footprint')}
+            checked={selectedAnswers.goal === 'Reduce Carbon Footprint'}
           />
           Reduce carbon footprint
         </label>        <label>
           <input
             type="checkbox"
-            onChange={() => handleGoalClick('Learn how to garden ')}
-            checked={selectedAnswers.goal === 'Learn how to garden'}
+            onChange={() => handleGoalClick('Learn to Garden')}
+            checked={selectedAnswers.goal === 'Learn to Garden'}
           />
           Learn how to garden 
         </label>        <label>
           <input
             type="checkbox"
-            onChange={() => handleGoalClick('Eat self-grown crops ')}
-            checked={selectedAnswers.goal === 'Eat self-grown crops'}
+            onChange={() => handleGoalClick('Eat Self-Grown')}
+            checked={selectedAnswers.goal === 'Eat Self-Grown'}
           />
           Eat self-grown crops 
         </label>        <label>
           <input
             type="checkbox"
-            onChange={() => handleGoalClick('Improve health and nutrient intake')}
-            checked={selectedAnswers.goal === 'Improve health and nutrient intake'}
+            onChange={() => handleGoalClick('Improve Health')}
+            checked={selectedAnswers.goal === 'Improve Health'}
           />
           Improve health and nutrient intake
         </label>        
@@ -353,14 +355,14 @@ function GardenQuiz() {
       <div>
         <h3>Time commitment</h3>
         <button
-          onClick={() => handleClick('timeCommitment', 'Less than 2 hours per week')}
+          onClick={() => handleClick('timeCommitment', 'Less Than 2 Hours')}
           style={{
             margin: '1rem',
             padding: '1rem',
-            backgroundColor: isSelected('timeCommitment', 'Less than 2 hours per week') ? '#d2f5d8' : '',
-            border: isSelected('timeCommitment', 'Less than 2 hours per week') ? '2px solid #40c267' : 'none',
+            backgroundColor: isSelected('timeCommitment', 'Less Than 2 Hours') ? '#d2f5d8' : '',
+            border: isSelected('timeCommitment', 'Less Than 2 Hours') ? '2px solid #40c267' : 'none',
             borderRadius: '10px',
-            boxShadow: isSelected('timeCommitment', 'Less than 2 hours per week') ? '0px 0px 5px 1px #40c267' : 'none',
+            boxShadow: isSelected('timeCommitment', 'Less Than 2 Hours') ? '0px 0px 5px 1px #40c267' : 'none',
           }}
         >
           Less than 2 hours per week
@@ -379,27 +381,27 @@ function GardenQuiz() {
           2-4 hours per week
         </button>
         <button
-          onClick={() => handleClick('timeCommitment', '4-7 hours per week')}
+          onClick={() => handleClick('timeCommitment', '4-7 Hours')}
           style={{
             margin: '1rem',
             padding: '1rem',
-            backgroundColor: isSelected('timeCommitment', '4-7 hours per week') ? '#d2f5d8' : '',
-            border: isSelected('timeCommitment', '4-7 hours per week') ? '2px solid #40c267' : 'none',
+            backgroundColor: isSelected('timeCommitment', '4-7 Hours') ? '#d2f5d8' : '',
+            border: isSelected('timeCommitment', '4-7 Hours') ? '2px solid #40c267' : 'none',
             borderRadius: '10px',
-            boxShadow: isSelected('timeCommitment', '4-7 hours per week') ? '0px 0px 5px 1px #40c267' : 'none',
+            boxShadow: isSelected('timeCommitment', '4-7 Hours') ? '0px 0px 5px 1px #40c267' : 'none',
           }}
         >
           4-7 hours per week
         </button>
         <button
-          onClick={() => handleClick('timeCommitment', '7+ hours per week')}
+          onClick={() => handleClick('timeCommitment', '7+ Hours')}
           style={{
             margin: '1rem',
             padding: '1rem',
-            backgroundColor: isSelected('timeCommitment', '7+ hours per week') ? '#d2f5d8' : '',
-            border: isSelected('timeCommitment', '7+ hours per week') ? '2px solid #40c267' : 'none',
+            backgroundColor: isSelected('timeCommitment', '7+ Hours') ? '#d2f5d8' : '',
+            border: isSelected('timeCommitment', '7+ Hours') ? '2px solid #40c267' : 'none',
             borderRadius: '10px',
-            boxShadow: isSelected('timeCommitment', '7+ hours per week') ? '0px 0px 5px 1px #40c267' : 'none',
+            boxShadow: isSelected('timeCommitment', '7+ Hours') ? '0px 0px 5px 1px #40c267' : 'none',
           }}
         >
           7+ hours per week 
