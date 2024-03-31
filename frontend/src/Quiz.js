@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Checkbox from './Checkbox'; // Import the Checkbox component
 
@@ -34,6 +34,33 @@ function Quiz() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const questions = document.querySelectorAll('.question-container');
+      questions.forEach(question => {
+        if (isElementInViewport(question)) {
+          question.classList.add('show');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const isElementInViewport = (el) => {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
+
   const handleSubmit = async () => {
     console.log(selectedAnswers)
     const res = await (
@@ -58,9 +85,23 @@ function Quiz() {
   }
 
   return (
-    <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
+    <div>
+    <style>{`
+      .question-container {
+        opacity: 0;
+        transition: opacity 3s ease; /* Smoothly transition opacity over 0.5 seconds */
+      }
+      
+      .question-container.show {
+        opacity: 1;
+      }
+      
+    `}</style>
+
+    <div className="question-container">
+    <div style={{ backgroundColor: 'pastelGreen', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <h2 style={{ textAlign: 'center' }}>Where is your garden?</h2>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
       <button
           onClick={() => {handleClick('garden', 'Condo interior');}}
           style={{
@@ -100,6 +141,8 @@ function Quiz() {
         >
           Company office
         </button>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
         <button
           onClick={() => handleClick('garden', 'Factory interior')}
           style={{
@@ -127,11 +170,14 @@ function Quiz() {
           Building Rooftop
         </button>
       </div>
-
+      </div>
+      </div>
+        
       {/* Current Season */}
+      <div className="question-container">
       <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
       <h2 style={{ textAlign: 'center' }}>Current Season?</h2>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
         <button
           onClick={() => handleClick('season', 'Spring')}
           style={{
@@ -186,11 +232,13 @@ function Quiz() {
         </button>
       </div>
       </div>
+      </div>
 
       {/* Garden Size */}
+      <div className="question-container">
       <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
       <h2 style={{ textAlign: 'center' }}>What size is your future garden?</h2>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
         <button
           onClick={() => handleClick('size', 'Tiny (1-2 plants, 20 cm longest side)')}
           style={{
@@ -216,7 +264,11 @@ function Quiz() {
           }}
         >
           Small (3-5 plants, 50 cm longest side)
-        </button>        <button
+        </button>        
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
+
+        <button
           onClick={() => handleClick('size', 'Medium (6-10 plants, 1 m longest side)')}
           style={{
             margin: '1rem',
@@ -255,11 +307,13 @@ function Quiz() {
         </button>
       </div>
       </div>
+      </div>
 
       {/* Gardening Experience */}
+      <div className="question-container">
       <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
       <h2 style={{ textAlign: 'center' }}>What is your gardening experience?</h2>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
         <button
           onClick={() => handleClick('experience', 'No Prior Experience')}
           style={{
@@ -298,11 +352,14 @@ function Quiz() {
         </button>
       </div>
       </div>
+      </div>
+
 
 {/* Gardening Goals (allow multiple selections) */}
+<div className="question-container">
 <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
   <h2 style={{ textAlign: 'center' }}>What are your gardening goals? (Select all that apply)</h2>
-  <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
+  <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
     <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
       <Checkbox
         type="checkbox"
@@ -321,6 +378,8 @@ function Quiz() {
       />
       Save money on transportation for groceries 
     </label>
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
     <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
       <Checkbox
         type="checkbox"
@@ -339,6 +398,8 @@ function Quiz() {
       />
       Learn how to garden 
     </label>
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
     <label style={{ margin: '0.5rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
       <Checkbox
         type="checkbox"
@@ -359,10 +420,12 @@ function Quiz() {
     </label>
   </div>
 </div>
+</div>
 
+      <div className="question-container">
       <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
       <h2 style={{ textAlign: 'center' }}>Time commitment</h2>
-      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}> 
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
         <button
           onClick={() => handleClick('timeCommitment', 'Less Than 2 Hours')}
           style={{
@@ -417,12 +480,31 @@ function Quiz() {
         </button>
       </div>
       </div>
+      </div>
 
       {Object.values(selectedAnswers).every((answer) => answer !== null) && (
-        <>
-          <p>Great! You've answered all the questions. Let's get you started on your gardening journey!</p>
-          <button onClick={handleSubmit}>submit</button>
-        </>
+      
+          <div className="question-container">
+          <div style={{ backgroundColor: 'pastelGreen', padding: '20px' }}>
+          <h2 style={{ textAlign: 'center' }}>Analyzing Answers...</h2>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
+          <button
+            onClick={handleSubmit}
+            style={{
+              padding: '1rem',
+              backgroundColor: '#4CAF50',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+            }}
+          >
+            Go to My Garden
+          </button>
+          
+        </div>
+        </div>
+        </div>
       )}
     </div>
   );

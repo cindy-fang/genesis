@@ -19,6 +19,8 @@ function Checkbox({ defaultChecked, onChange }) {
           display: inline-block;
           cursor: pointer;
           position: relative;
+          margin-right: 8px; /* Add space between checkbox and label */
+
         }
 
         .custom-checkbox.checked::before {
