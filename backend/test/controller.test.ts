@@ -29,11 +29,11 @@ describe("The questions api works!", () => {
             season: getRandomEnumValue(SeasonQuery),
             size: getRandomEnumValue(GardenSizeQuery),
             experience: getRandomEnumValue(GardeningExperienceQuery),
-            goal: getRandomEnumValue(GardeningGoalQuery),
+            goal: [getRandomEnumValue(GardeningGoalQuery)],
             timeCommitment: getRandomEnumValue(TimeCommitmentQuery),
           }),
         })
       ).json()
     ).toStrictEqual("Acutally Works!");
-  }, 15000);
+  });
 });
