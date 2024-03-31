@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import styled from 'styled-components';
 import { Survey } from 'survey-react-ui';
 import { Model } from 'survey-core';
@@ -83,6 +84,20 @@ function App() {
                 <button type="submit">Submit!</button>
             </FORM>
         </center>
+=======
+import React from 'react';
+import './App.css'; // Import CSS file for styling
+import Welcome from './Welcome'; // Import WelcomePage component
+import KahootQuestion from './KahootQuestion'; // Import KahootQuestion component
+
+function App() {
+  const choices = ['Condo interior', 'Condo balcony', 'Company office', 'Factory interior', 'Building Rooftop'];
+
+  return (
+    <div className="App">
+      <Welcome />
+      <KahootQuestion question="Where is your garden?" choices={choices} />
+>>>>>>> Stashed changes
     </div>
     );
 }

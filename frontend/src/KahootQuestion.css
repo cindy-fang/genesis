@@ -1,0 +1,27 @@
+.kahoot-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .question {
+    color: #4CAF50; /* Green color */
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .choices-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .choice {
+    margin-bottom: 10px;
+  }
+  
+  .choice-label {
+    color: #4CAF50; /* Green color */
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  
