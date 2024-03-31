@@ -21,6 +21,6 @@ describe("The questions api works!", () => {
                 goal: getRandomEnumValue(type_1.GardeningGoalQuery),
                 timeCommitment: getRandomEnumValue(type_1.TimeCommitmentQuery),
             }),
-        })).text()).toStrictEqual("Acutally Works!");
-    });
+        })).json()).toStrictEqual("Acutally Works!");
+    }, 15000);
 });

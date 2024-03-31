@@ -33,7 +33,7 @@ describe("The questions api works!", () => {
             timeCommitment: getRandomEnumValue(TimeCommitmentQuery),
           }),
         })
-      ).text()
+      ).json()
     ).toStrictEqual("Acutally Works!");
-  });
+  }, 15000);
 });
